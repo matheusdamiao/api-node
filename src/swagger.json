@@ -1,0 +1,13 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "MyAPI documentation",
+        "description": "MyAPI documentation with all specifications",
+        "version": "1.0.0",
+        "contact": {
+            "name": "Matheus Damião",
+            "email": "matheus.damiaoliveira@gmail.com"
+        }
+    }
+
+}
