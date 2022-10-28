@@ -1,6 +1,7 @@
 import { createRoleController } from '@roles/useCases/createRole'
 import { listRoleController } from '@roles/useCases/listRoles'
 import { showRolesController } from '@roles/useCases/showRoles'
+import { updateRolesController } from '@roles/useCases/udpdateRole'
 import { Router } from 'express'
 
 const rolesRouter = Router()
@@ -15,6 +16,10 @@ rolesRouter.get('/', (request, response) => {
 
 rolesRouter.get('/:id', (request, response) => {
     return showRolesController.handle(request, response)
+})
+
+rolesRouter.put('/:id', (request, response) => {
+    return updateRolesController.handle(request, response)
 })
 
 export { rolesRouter }
