@@ -36,7 +36,7 @@ export class RolesRepository {
 
     async create({ name }: CreateRoleDTO): Promise<Role> {
         const role = this.repository.create({ name })
-        return this.repository.save(role)
+        return await this.repository.save(role)
     }
 
     async save(role: Role): Promise<Role> {
@@ -57,6 +57,7 @@ export class RolesRepository {
             .skip(skip)
             .take(take)
             .getManyAndCount()
+
         const result = {
             per_page: take,
             total: count,
