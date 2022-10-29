@@ -60,9 +60,53 @@
                 "tags": ["Role"],
                 "summary": "List all roles",
                 "description": "Returns all roles paginated",
+                "parameters": [
+                    {"name": "page",
+                     "in": "query",
+                    "description": "number of pages",
+                    "required": false,
+                    "schema": {
+                        "type":"number",
+                        "example": "page=1"
+                        },
+                    "style": "label"
+                    },
+                    {"name": "limite",
+                    "in": "query",
+                   "description": "number of registers per page",
+                   "required": false,
+                   "schema": {
+                       "type":"number",
+                       "example": "limit=15"
+                       },
+                    "style": "label"
+                   }
+                ],
+
                 "responses": {
                     "200": {
-                        "description": "Success"
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "example": {
+                                    "per_page": 15,
+                                    "total": 2,
+                                    "current_page": 1,
+                                    "data": [
+                                        {
+                                            "id": "5942f118-bf07-4384-a19c-cb7667e70e2c",
+                                            "name": "Users",
+                                            "created_at": "2022-10-28T17:02:03.000Z"
+                                        },
+                                        {
+                                            "id": "1f74b29f-75f8-44c9-910f-3354c3d2659b",
+                                            "name": "Admin",
+                                            "created_at": "2022-10-28T17:02:07.000Z"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
                     }
                 }
             }
