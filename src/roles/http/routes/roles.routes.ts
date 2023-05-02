@@ -1,12 +1,19 @@
-import { createRoleController } from '@roles/useCases/createRole'
-import { deleteRolesController } from '@roles/useCases/deleteRole'
-import { listRoleController } from '@roles/useCases/listRoles'
-import { showRolesController } from '@roles/useCases/showRoles'
-import { updateRolesController } from '@roles/useCases/udpdateRole'
 import { Router } from 'express'
 import { celebrate, Segments, Joi } from 'celebrate'
+import { container } from 'tsyringe'
+import { CreateRoleController } from '@roles/useCases/createRole/CreateRoleController'
+import { ListRoleController } from '@roles/useCases/listRoles/ListRoleController'
+import { ShowRolesController } from '@roles/useCases/showRoles/ShowRolesController'
+import { UpdateRolesController } from '@roles/useCases/udpdateRole/UpdateRolesController'
+import { DeleteRolesController } from '@roles/useCases/deleteRole/DeleteRolesController'
 
 const rolesRouter = Router()
+
+const createRoleController = container.resolve(CreateRoleController)
+const listRoleController = container.resolve(ListRoleController)
+const showRolesController = container.resolve(ShowRolesController)
+const updateRolesController = container.resolve(UpdateRolesController)
+const deleteRolesController = container.resolve(DeleteRolesController)
 
 rolesRouter.post(
     '/',
