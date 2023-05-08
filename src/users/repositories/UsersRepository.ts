@@ -7,7 +7,9 @@ import {
 } from './IUsersRepository'
 import { dataSource } from '@shared/typeorm'
 import { Repository } from 'typeorm'
+import { injectable } from 'tsyringe'
 
+@injectable()
 export class UsersRepository implements IUsersRepository {
     private repository: Repository<User>
 

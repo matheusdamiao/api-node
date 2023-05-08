@@ -1,6 +1,7 @@
 import { IUsersRepository } from '@users/repositories/IUsersRepository'
 import { UsersRepository } from '@users/repositories/UsersRepository'
-import { CreateUserUseCase } from '@users/useCases/createUser/CreateUserUseCase'
+import { CreateUserController } from '@users/useCases/createUser/CreateUserController'
+import { ListUsersController } from '@users/useCases/listUsers/ListUsersController'
 import { container } from 'tsyringe'
 
 container.registerSingleton<IUsersRepository>(
@@ -8,4 +9,5 @@ container.registerSingleton<IUsersRepository>(
     UsersRepository,
 )
 
-container.registerSingleton('CreateUserUseCase', CreateUserUseCase)
+container.registerSingleton('CreateUserController', CreateUserController)
+container.registerSingleton('ListUsersController', ListUsersController)
