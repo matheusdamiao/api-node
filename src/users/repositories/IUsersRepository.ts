@@ -1,3 +1,4 @@
+import { Role } from '@roles/entities/Role'
 import { User } from '@users/entities/User'
 
 export type CreateUserDTO = {
@@ -5,7 +6,7 @@ export type CreateUserDTO = {
     email: string
     password: string
     isAdmin: boolean
-    role: User
+    role: Role
 }
 
 export type PaginateParams = {
