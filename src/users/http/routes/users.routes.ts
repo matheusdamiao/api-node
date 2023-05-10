@@ -1,3 +1,4 @@
+import { CreateLoginController } from '@users/useCases/createLogin/CreateLoginController'
 import { CreateUserController } from '@users/useCases/createUser/CreateUserController'
 import { ListUsersController } from '@users/useCases/listUsers/ListUsersController'
 import { Joi, Segments, celebrate } from 'celebrate'
@@ -8,6 +9,7 @@ const usersRouter = Router()
 
 const createUserController = container.resolve(CreateUserController)
 const listUsersController = container.resolve(ListUsersController)
+const createLoginController = container.resolve(CreateLoginController)
 
 usersRouter.post(
     '/',
@@ -35,6 +37,19 @@ usersRouter.get(
     }),
     (response, request) => {
         return listUsersController.handle(request, response)
+    },
+)
+
+usersRouter.post(
+    '/login',
+    celebrate({
+        [Segments.BODY]: Joi.object().keys({
+            email: Joi.string().email().required(),
+            password: Joi.string().required(),
+        }),
+    }),
+    (response, request) => {
+        return createLoginController.handle(response, request)
     },
 )
 

@@ -17,7 +17,7 @@ type IResponse = {
 }
 
 @injectable()
-export class CreateUserUseCase {
+export class CreateLoginUseCase {
     constructor(
         @inject('UsersRepository')
         private usersRepository: IUsersRepository,
