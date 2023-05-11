@@ -14,7 +14,7 @@ const createLoginController = container.resolve(CreateLoginController)
 
 usersRouter.post(
     '/',
-    // isAuthenticated,
+    isAuthenticated,
     celebrate({
         [Segments.BODY]: Joi.object().keys({
             name: Joi.string().required(),
