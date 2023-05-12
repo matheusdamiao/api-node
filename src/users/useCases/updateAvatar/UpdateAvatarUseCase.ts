@@ -5,6 +5,7 @@ import { AppError } from '@shared/errors/AppError'
 import { User } from '@users/entities/User'
 import { IUsersRepository } from '@users/repositories/IUsersRepository'
 import uploadConfig from '@config/upload'
+import { instanceToInstance } from 'class-transformer'
 
 type UpdateAvatarDTO = {
     userId: string
@@ -36,11 +37,11 @@ export class UpdateAvatarUseCase {
                 userAvatarFilePath,
             )
             if (userAvatarFileExists) {
-                fs.promises.unlink(userAvatarFilePath)
+                await fs.promises.unlink(userAvatarFilePath)
             }
         }
 
         user.avatar = avatarFilename
-        return await this.usersRepository.save(user)
+        return this.usersRepository.save(user)
     }
 }

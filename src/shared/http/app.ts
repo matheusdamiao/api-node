@@ -7,11 +7,13 @@ import { routes } from './routes'
 import { AppError } from '@shared/errors/AppError'
 import swaggerFile from '../../swagger.json'
 import '@shared/container'
+import upoloadConfig from '@config/upload'
 
 const app = express()
 app.use(cors())
-
 app.use(express.json())
+
+app.use('/files', express.static(upoloadConfig.directory))
 app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerFile))
 
 app.use(routes)
