@@ -362,6 +362,83 @@
 
 
                 }
+            },
+            "get": {
+                "tags": ["Users"],
+                "summary": "List all users",
+                "description": "Returns all users paginated",
+                "parameters": [
+                    {"name": "page",
+                     "in": "query",
+                    "description": "number of pages",
+                    "required": false,
+                    "schema": {
+                        "type":"number",
+                        "example": "page=1"
+                        },
+                    "style": "label"
+                    },
+                    {"name": "limite",
+                    "in": "query",
+                   "description": "number of registers per page",
+                   "required": false,
+                   "schema": {
+                       "type":"number",
+                       "example": "limit=15"
+                       },
+                    "style": "label"
+                   }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "example": {
+                                    "per_page": 15,
+                                    "total": 2,
+                                    "current_page": 1,
+                                    "data": [
+                                        {
+                                            "id": "d77871af-e5d7-4310-906b-36523f697652",
+                                            "name": "admin",
+                                            "email": "admin@admin.com.br",
+                                            "isAdmin": true,
+                                            "avatar": "c74d422b27896073a1aa_zap_avatar.jpeg",
+                                            "created_at": "2023-05-11T17:20:48.000Z",
+                                            "role": {
+                                                "id": "ccd8d9e8-6238-4df7-b4b2-20cc58441f2d",
+                                                "name": "T.I",
+                                                "created_at": "2023-05-11T17:20:48.000Z"
+                                            },
+                                            "avatar_url": "http://localhost:3000/files/c74d422b27896073a1aa_zap_avatar.jpeg"
+                                        },
+                                        {
+                                            "id": "f168daeb-7b6e-4d67-b05b-b5d23d9a0b10",
+                                            "name": "Maria",
+                                            "email": "maria@gmail.com",
+                                            "isAdmin": false,
+                                            "avatar": "acff2ccdd3f22071a742_zap_avatar.jpeg",
+                                            "created_at": "2023-05-11T18:45:29.000Z",
+                                            "role": {
+                                                "id": "b8ec6754-a5e1-4611-b5e9-dd06fd2ea92e",
+                                                "name": "usuario",
+                                                "created_at": "2023-05-11T18:44:59.000Z"
+                                            },
+                                            "avatar_url": "http://localhost:3000/files/acff2ccdd3f22071a742_zap_avatar.jpeg"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401":{
+                        "description": "Invalid authentication token"
+                    }
+                }
             }
         }
 
