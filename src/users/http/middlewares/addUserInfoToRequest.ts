@@ -1,7 +1,7 @@
 import { AppError } from '@shared/errors/AppError'
 import { NextFunction, Request, Response } from 'express'
 import { Secret, decode, verify } from 'jsonwebtoken'
-import authConfig from '@config/auth'
+
 
 type JwtPayloadProps = {
     sub: string

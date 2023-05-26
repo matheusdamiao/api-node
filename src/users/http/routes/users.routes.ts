@@ -29,13 +29,13 @@ const upload = multer(uploadConfig)
 
 usersRouter.post(
     '/',
-    isAuthenticated,
+    // isAuthenticated,
     celebrate({
         [Segments.BODY]: Joi.object().keys({
             name: Joi.string().required(),
             email: Joi.string().email().required(),
             password: Joi.string().required(),
-            isAdmin: Joi.boolean().required(),
+            isAdmin: Joi.boolean(),
             roleId: Joi.string().uuid().required(),
         }),
     }),

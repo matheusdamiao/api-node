@@ -4,6 +4,7 @@ import { IUsersRepository } from '@users/repositories/IUsersRepository'
 import { sign } from 'jsonwebtoken'
 import { inject, injectable } from 'tsyringe'
 import authConfig from '@config/auth'
+import { User } from '@users/entities/User'
 
 type CreateAccessAndRefreshTokenDTO = {
     user_id: string
